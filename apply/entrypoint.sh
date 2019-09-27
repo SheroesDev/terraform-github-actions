@@ -39,9 +39,9 @@ if [[ ! -z "$TF_ACTION_WORKSPACE" ]] && [[ "$TF_ACTION_WORKSPACE" != "default" ]
 fi
 
 set +e
-OUTPUT=$(sh -c "TF_IN_AUTOMATION=true terraform apply -no-color -auto-approve -input=false $*" 2>&1)
+sh -c "TF_IN_AUTOMATION=true terraform apply -no-color -auto-approve -input=false $*" 2>&1
 SUCCESS=$?
-echo "$OUTPUT"
+# echo "$OUTPUT"
 set -e
 
 # If PR_DATA is null, then this is not a pull request event and so there's
